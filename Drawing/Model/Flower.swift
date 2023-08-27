@@ -8,6 +8,18 @@
 import SwiftUI
 
 
+struct FlowerModel {
+    let id: UUID?
+    var name: String
+    var lineWidth: Float
+    var numberOfPetals: Double
+    var petalOffset: Double
+    var petalWidth: Double
+    var primaryColor: String
+    var secondaryColor: String
+    var tertiaryColor: String
+}
+
 struct Flower: InsettableShape {
     // How much to move this petal away from the center
     var petalOffset: Double = -20

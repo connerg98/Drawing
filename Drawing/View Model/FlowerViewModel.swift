@@ -21,4 +21,60 @@ class FlowerViewModel: ObservableObject {
             print("ERROR; \(error.localizedDescription)")
         }
     }
+    
+    func create(_ flower: FlowerModel, context: NSManagedObjectContext) {
+        let newFlower = FlowerCD(context: context)
+        newFlower.id = UUID()
+        newFlower.name = flower.name
+        newFlower.lineWidth = flower.lineWidth
+        newFlower.numberOfPetals = flower.numberOfPetals
+        newFlower.petalWidth = flower.petalWidth
+        newFlower.petalOffset = flower.petalOffset
+        
+        newFlower.primaryColor = flower.primaryColor
+        newFlower.secondaryColor = flower.secondaryColor
+        newFlower.tertiaryColor = flower.tertiaryColor
+        
+        flowers.append(newFlower)
+        
+        save(context: context)
+    }
+    
+    func edit(_ flower: FlowerModel, context: NSManagedObjectContext) {
+        guard let index = index(of: flower) else { print("ERROR; flower doesn't exist") ; return }
+        let editedFlower = flowers[index]
+        
+        editedFlower.name = flower.name
+        editedFlower.lineWidth = flower.lineWidth
+        editedFlower.numberOfPetals = flower.numberOfPetals
+        editedFlower.petalWidth = flower.petalWidth
+        editedFlower.petalOffset = flower.petalOffset
+        
+        editedFlower.primaryColor = flower.primaryColor
+        editedFlower.secondaryColor = flower.secondaryColor
+        editedFlower.tertiaryColor = flower.tertiaryColor
+        
+        save(context: context)
+    }
+    
+    func delete(_ flower: FlowerModel, context: NSManagedObjectContext) {
+        guard let index = index(of: flower) else { print("ERROR; flower doesn't exist") ; return }
+        let removedFlower = flowers[index]
+        
+        flowers.remove(at: index)
+        
+        context.delete(removedFlower)
+    }
+    
+    func index(of flower: FlowerModel) -> Int? {
+        return flowers.firstIndex(where: { $0.id == flower.id })
+    }
+    
+    func save(context: NSManagedObjectContext) {
+        do {
+            try context.save()
+        } catch {
+            print("ERROR; \(error.localizedDescription)")
+        }
+    }
 }
