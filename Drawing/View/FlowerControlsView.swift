@@ -30,13 +30,17 @@ struct FlowerControlsView: View {
                 Spacer()
                 
                 Group {
-                    
+                    Spacer()
+
                     FlowerView(primary: colorSet.primary, secondary: colorSet.secondary, tertiary: colorSet.tertiary, petalOffset: $flower.petalOffset, petalWidth: $flower.petalWidth, numberOfPetals: $flower.numberOfPetals, tertiaryLineWidth: $flower.lineWidth)
-                    //                .padding(.top)
-                    //                .frame(maxWidth: 50, maxHeight: 50)
+                                    .frame(maxWidth: 50, maxHeight: 50)
+                                    .padding()
                     
+                    Spacer()
                 }
+
                 
+//                Spacer()
                 Spacer()
                 
                 
