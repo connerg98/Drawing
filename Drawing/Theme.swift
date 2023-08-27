@@ -45,3 +45,12 @@ extension ShapeStyle where Self == Color {
 func decimalValueofRGB(value: Double) -> Double {
     return (value / 255)
 }
+
+func rgbStringToColor(_ rgbString: String) -> Color {
+    let rgbTouple = rgbString.toRGB()
+    let red = decimalValueofRGB(value: rgbTouple.red)
+    let green = decimalValueofRGB(value: rgbTouple.green)
+    let blue = decimalValueofRGB(value: rgbTouple.blue)
+
+    return Color(red: red, green: green, blue: blue)
+}

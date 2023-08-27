@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import CoreData
+
 
 @main
 struct DrawingApp: App {
+    let persistenceController = PersistenceController.shared
+    
     var body: some Scene {
         WindowGroup {
-            FlowerControlsView()
+            FlowerListView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

@@ -70,6 +70,21 @@ class FlowerViewModel: ObservableObject {
         return flowers.firstIndex(where: { $0.id == flower.id })
     }
     
+    func transformIntoModel(_ flower: FlowerCD) -> FlowerModel {
+        let newFlower = FlowerModel(
+            id: flower.id ?? UUID(),
+            name: flower.name ?? "No name",
+            lineWidth: flower.lineWidth,
+            numberOfPetals: flower.numberOfPetals,
+            petalOffset: flower.petalOffset,
+            petalWidth: flower.petalWidth,
+            primaryColor: flower.primaryColor ?? "100 0 0",
+            secondaryColor: flower.secondaryColor ?? "0 0 0",
+            tertiaryColor: flower.tertiaryColor ?? "255 255 255")
+        
+        return newFlower
+    }
+    
     func save(context: NSManagedObjectContext) {
         do {
             try context.save()

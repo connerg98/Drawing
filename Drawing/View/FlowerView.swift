@@ -15,7 +15,7 @@ struct FlowerView: View {
     @Binding var petalOffset: Double
     @Binding var petalWidth: Double
     @Binding var numberOfPetals: Double
-    @Binding var tertiaryLineWidth: CGFloat
+    @Binding var tertiaryLineWidth: Float
     
     var body: some View {
         ZStack {
@@ -24,7 +24,7 @@ struct FlowerView: View {
             Flower(petalOffset: petalOffset, petalWidth: petalWidth, numberOfPetals: numberOfPetals)
                 .fill(secondary, style: FillStyle(eoFill: true, antialiased: true))
             Flower(petalOffset: petalOffset, petalWidth: petalWidth, numberOfPetals: numberOfPetals)
-                .stroke(tertiary, lineWidth: tertiaryLineWidth)
+                .stroke(tertiary, lineWidth: CGFloat(tertiaryLineWidth))
         }
     }
 }
