@@ -18,6 +18,7 @@ struct FlowerModel {
     var primaryColor: String
     var secondaryColor: String
     var tertiaryColor: String
+    var imageURL: URL?
 }
 
 struct Flower: InsettableShape {

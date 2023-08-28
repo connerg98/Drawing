@@ -13,6 +13,8 @@ struct FlowerListView: View {
     
     @StateObject private var flowerVM = FlowerViewModel()
     
+    private var imageIndex = -1
+    
     var body: some View {
         NavigationView {
             List {
@@ -21,13 +23,23 @@ struct FlowerListView: View {
                         FlowerControlsView(flower: flowerVM.transformIntoModel(flower))
                             .environmentObject(flowerVM)
                     } label: {
-                        Text(flower.name ?? "No name")
+                        HStack {
+                            if let flowerImage = AdvancedImage.fetchImage(from: flower.flowerImageURL) {
+                                Image(uiImage: flowerImage)
+                            } else {
+                                Image(systemName: "plus")
+                            }
+                            
+                            VStack {
+                                Text(flower.name ?? "No name")
+                            }
+                        }
                     }
                 }
 
             }
             .navigationTitle("My Flowers")
-            .onAppear { flowerVM.fetchFlowers(context: context) }
+            .onAppear { flowerVM.fetchFlowers(context: context) ; flowerVM.fetchImages() }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {

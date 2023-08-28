@@ -5,12 +5,13 @@
 //  Created by Conner Glasgow on 8/26/23.
 //
 
-import Foundation
+import SwiftUI
 import CoreData
 
 
 class FlowerViewModel: ObservableObject {
     @Published var flowers: [FlowerCD] = []
+    @Published var flowerImages: [UIImage] = []
     
     func fetchFlowers(context: NSManagedObjectContext) {
         let fetchRequest: NSFetchRequest<FlowerCD> = FlowerCD.fetchRequest()
@@ -20,6 +21,14 @@ class FlowerViewModel: ObservableObject {
         } catch {
             print("ERROR; \(error.localizedDescription)")
         }
+    }
+    
+    func fetchImages() {
+        let imageURLs = flowers.compactMap { $0.flowerImageURL }
+        let imageDataCollection = imageURLs.compactMap { try? Data(contentsOf: $0 as URL) }
+        let images = imageDataCollection.compactMap { UIImage(data: $0) }
+        
+        flowerImages = images
     }
     
     func create(_ flower: FlowerModel, context: NSManagedObjectContext) {
@@ -34,6 +43,8 @@ class FlowerViewModel: ObservableObject {
         newFlower.primaryColor = flower.primaryColor
         newFlower.secondaryColor = flower.secondaryColor
         newFlower.tertiaryColor = flower.tertiaryColor
+        
+        newFlower.flowerImageURL = flower.imageURL
         
         flowers.append(newFlower)
         
@@ -53,6 +64,8 @@ class FlowerViewModel: ObservableObject {
         editedFlower.primaryColor = flower.primaryColor
         editedFlower.secondaryColor = flower.secondaryColor
         editedFlower.tertiaryColor = flower.tertiaryColor
+        
+        editedFlower.flowerImageURL = flower.imageURL
         
         save(context: context)
     }
@@ -80,7 +93,8 @@ class FlowerViewModel: ObservableObject {
             petalWidth: flower.petalWidth,
             primaryColor: flower.primaryColor ?? "100 0 0",
             secondaryColor: flower.secondaryColor ?? "0 0 0",
-            tertiaryColor: flower.tertiaryColor ?? "255 255 255")
+            tertiaryColor: flower.tertiaryColor ?? "255 255 255",
+            imageURL: flower.flowerImageURL)
         
         return newFlower
     }

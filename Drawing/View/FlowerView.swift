@@ -17,6 +17,9 @@ struct FlowerView: View {
     @Binding var numberOfPetals: Double
     @Binding var tertiaryLineWidth: Float
     
+    @Binding var name: String
+    @Binding var url: URL?
+        
     var body: some View {
         ZStack {
             Flower(petalOffset: petalOffset, petalWidth: petalWidth, numberOfPetals: numberOfPetals)
@@ -26,11 +29,17 @@ struct FlowerView: View {
             Flower(petalOffset: petalOffset, petalWidth: petalWidth, numberOfPetals: numberOfPetals)
                 .stroke(tertiary, lineWidth: CGFloat(tertiaryLineWidth))
         }
+//        .onTapGesture {
+//            let image: UIImage = AdvancedImage.takeSnapshot(of: FlowerListView())
+//            AdvancedImage.saveSnapshot(image, imageName: name, imageURL: &url)
+//            
+//            print("Flower tapped")
+//        }
     }
 }
 
 struct FlowerView_Previews: PreviewProvider {
     static var previews: some View {
-        FlowerView(primary: .yellow, secondary: .blue, tertiary: .black, petalOffset: .constant(-20), petalWidth: .constant(100), numberOfPetals: .constant(16), tertiaryLineWidth: .constant(3))
+        FlowerView(primary: .yellow, secondary: .blue, tertiary: .black, petalOffset: .constant(-20), petalWidth: .constant(100), numberOfPetals: .constant(16), tertiaryLineWidth: .constant(3), name: .constant("turd"), url: .constant(nil))
     }
 }

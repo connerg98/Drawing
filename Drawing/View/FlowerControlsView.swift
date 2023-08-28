@@ -8,11 +8,6 @@
 import SwiftUI
 
 struct FlowerControlsView: View {
-//    @State private var petalOffset = -20.0
-//    @State private var petalWidth = 100.0
-//    @State private var numberOfPetals: Double = 16.0
-//
-//    @State private var petalLineWidth: CGFloat = 3.0
     @Environment(\.managedObjectContext) var context
     @Environment(\.dismiss) var dismiss
     
@@ -25,26 +20,15 @@ struct FlowerControlsView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack {
-                Spacer()
-                
-                Group {
-                    Spacer()
-
-                    FlowerView(primary: colorSet.primary, secondary: colorSet.secondary, tertiary: colorSet.tertiary, petalOffset: $flower.petalOffset, petalWidth: $flower.petalWidth, numberOfPetals: $flower.numberOfPetals, tertiaryLineWidth: $flower.lineWidth)
-                                    .frame(maxWidth: 50, maxHeight: 50)
-                                    .padding()
-                    
-                    Spacer()
-                }
-
-                
-//                Spacer()
-                Spacer()
-                
-                
-                Group {
+        VStack {
+            FlowerView(primary: colorSet.primary, secondary: colorSet.secondary, tertiary: colorSet.tertiary, petalOffset: $flower.petalOffset, petalWidth: $flower.petalWidth, numberOfPetals: $flower.numberOfPetals, tertiaryLineWidth: $flower.lineWidth, name: $flower.name, url: $flower.imageURL)
+                .padding()
+                .frame(width: 250, height: 250)
+            
+            Spacer()
+            
+            VStack(alignment: .trailing) {
+                ScrollView {
                     VStack {
                         //                Text("Name:")
                         TextField("name", text: $flower.name)
@@ -75,47 +59,19 @@ struct FlowerControlsView: View {
                     }
                     .padding(.horizontal)
                 }
-                
-                VStack {
-                    Text("Petal Line Width: \(Int(flower.lineWidth))")
-                    Slider(value: $flower.lineWidth, in: 0...15)
-                }
-                .padding(.horizontal)
-                
-                VStack {
-                    Text("Petal Line Width: \(Int(flower.lineWidth))")
-                    Slider(value: $flower.lineWidth, in: 0...15)
-                }
-                .padding(.horizontal)
-                VStack {
-                    Text("Petal Line Width: \(Int(flower.lineWidth))")
-                    Slider(value: $flower.lineWidth, in: 0...15)
-                }
-                .padding(.horizontal)
-                VStack {
-                    Text("Petal Line Width: \(Int(flower.lineWidth))")
-                    Slider(value: $flower.lineWidth, in: 0...15)
-                }
-                .padding(.horizontal)
-                VStack {
-                    Text("Petal Line Width: \(Int(flower.lineWidth))")
-                    Slider(value: $flower.lineWidth, in: 0...15)
-                }
-                .padding(.horizontal)
-                
-                Button("Save") {
-                    if flower.id == nil {
-                        flowerVM.create(flower, context: context)
-                    } else {
-                        flowerVM.edit(flower, context: context)
-                    }
-                    
-                    flowerVM.save(context: context)
-                    dismiss()
-                }
+                .frame(maxHeight: 350)
             }
-            //        .navigationTitle(flower.name)
-            //        .padding()
+            
+            Button("Save") {
+                if flower.id == nil {
+                    flowerVM.create(flower, context: context)
+                } else {
+                    flowerVM.edit(flower, context: context)
+                }
+                
+                flowerVM.save(context: context)
+                dismiss()
+            }
         }
     }
 }

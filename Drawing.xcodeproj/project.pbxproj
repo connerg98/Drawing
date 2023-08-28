@@ -17,6 +17,9 @@
 		AA0E106A2A9AC04C009A4FC0 /* FlowerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0E10692A9AC04C009A4FC0 /* FlowerViewModel.swift */; };
 		AA0E106C2A9AC6AE009A4FC0 /* StringToRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0E106B2A9AC6AE009A4FC0 /* StringToRGB.swift */; };
 		AA0E106E2A9B13C9009A4FC0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0E106D2A9B13C9009A4FC0 /* Persistence.swift */; };
+		AA0E10702A9BCB0B009A4FC0 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0E106F2A9BCB0B009A4FC0 /* FileManager-DocumentsDirectory.swift */; };
+		AA0E10722A9BCBC6009A4FC0 /* FlowerImage.json in Resources */ = {isa = PBXBuildFile; fileRef = AA0E10712A9BCBC6009A4FC0 /* FlowerImage.json */; };
+		AA0E10742A9BCC4E009A4FC0 /* AdvancedImageFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0E10732A9BCC4E009A4FC0 /* AdvancedImageFetching.swift */; };
 		AA3BEDE12802ABF800672463 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3BEDE02802ABF800672463 /* Theme.swift */; };
 		AA7D6A4B27FEBB1D00908526 /* DrawingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7D6A4A27FEBB1D00908526 /* DrawingApp.swift */; };
 		AA7D6A4F27FEBB2000908526 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA7D6A4E27FEBB2000908526 /* Assets.xcassets */; };
@@ -34,6 +37,9 @@
 		AA0E10692A9AC04C009A4FC0 /* FlowerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerViewModel.swift; sourceTree = "<group>"; };
 		AA0E106B2A9AC6AE009A4FC0 /* StringToRGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringToRGB.swift; sourceTree = "<group>"; };
 		AA0E106D2A9B13C9009A4FC0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		AA0E106F2A9BCB0B009A4FC0 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
+		AA0E10712A9BCBC6009A4FC0 /* FlowerImage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FlowerImage.json; sourceTree = "<group>"; };
+		AA0E10732A9BCC4E009A4FC0 /* AdvancedImageFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedImageFetching.swift; sourceTree = "<group>"; };
 		AA3BEDE02802ABF800672463 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		AA7D6A4727FEBB1D00908526 /* Drawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7D6A4A27FEBB1D00908526 /* DrawingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingApp.swift; sourceTree = "<group>"; };
@@ -67,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				AA0E10692A9AC04C009A4FC0 /* FlowerViewModel.swift */,
+				AA0E10732A9BCC4E009A4FC0 /* AdvancedImageFetching.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -107,6 +114,8 @@
 				AA0E10512A9ABC19009A4FC0 /* View Model */,
 				AA7D6A4E27FEBB2000908526 /* Assets.xcassets */,
 				AA0E106D2A9B13C9009A4FC0 /* Persistence.swift */,
+				AA0E106F2A9BCB0B009A4FC0 /* FileManager-DocumentsDirectory.swift */,
+				AA0E10712A9BCBC6009A4FC0 /* FlowerImage.json */,
 				AA0E10662A9ABEF6009A4FC0 /* Drawing.xcdatamodeld */,
 				AA7D6A5027FEBB2000908526 /* Preview Content */,
 			);
@@ -181,6 +190,7 @@
 			files = (
 				AA7D6A5227FEBB2000908526 /* Preview Assets.xcassets in Resources */,
 				AA7D6A4F27FEBB2000908526 /* Assets.xcassets in Resources */,
+				AA0E10722A9BCBC6009A4FC0 /* FlowerImage.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,11 +208,13 @@
 				AA0E10612A9ABDC0009A4FC0 /* FlowerControlsView.swift in Sources */,
 				AA0E105F2A9ABD85009A4FC0 /* FlowerView.swift in Sources */,
 				AA0E106A2A9AC04C009A4FC0 /* FlowerViewModel.swift in Sources */,
+				AA0E10702A9BCB0B009A4FC0 /* FileManager-DocumentsDirectory.swift in Sources */,
 				AA0E10572A9ABCC4009A4FC0 /* Arc.swift in Sources */,
 				AA0E106C2A9AC6AE009A4FC0 /* StringToRGB.swift in Sources */,
 				AA0E106E2A9B13C9009A4FC0 /* Persistence.swift in Sources */,
 				AA7D6A4B27FEBB1D00908526 /* DrawingApp.swift in Sources */,
 				AA0E10632A9ABEA4009A4FC0 /* FlowerListView.swift in Sources */,
+				AA0E10742A9BCC4E009A4FC0 /* AdvancedImageFetching.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
